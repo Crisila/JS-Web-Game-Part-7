@@ -13,13 +13,15 @@ const npc = newNonPlayableCharacter(50, 300)
 
 async function moveNPC(){
     // 6. implement a complex track
-    await npc.walkNorth(1400)
-    await npc.walkEast(1200)
-    await npc.walkSouth(300)
-    await npc.walkEast(1500)
-    await npc.walkSouth(1500)
-    await npc.walkWest (2700)
-    await npc.walkNorth(400)
+    while (true) {
+        await npc.walkNorth(1400)
+        await npc.walkEast(1200)
+        await npc.walkSouth(300)
+        await npc.walkEast(1500)
+        await npc.walkSouth(1500)
+        await npc.walkWest (2700)
+        await npc.walkNorth(400)
+    }
 }
 moveNPC()
 
