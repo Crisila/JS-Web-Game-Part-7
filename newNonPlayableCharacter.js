@@ -23,24 +23,39 @@ function newNonPlayableCharacter(x, y) {
 
     setInterval(moveCharacter, 1)
 
-    function walkEast() {
+    // make asynchronous
+    // Make it accept time as a parameter. add time inside walkEast()
+    async function walkEast(time) {
         direction = 'east'
         element.src = `./assets/red-character/east.gif`
+        // Use await to pause walkEast until sleep (time) has resolved.
+        // At the end of the function, invoke sleep and pass it time as an argument.
+        await sleep(time)
+        // After sleep has resolved, invoke stop to stop the character.
+        stop()
+        
     }
 
-    function walkNorth() {
+    // 5. add the ability to wait for the other directions
+    async function walkNorth(time) {
         direction = 'north'
         element.src = `./assets/red-character/north.gif`
+        await sleep(time)
+        stop()
     }
 
-    function walkWest() {
+    async function walkWest(time) {
         direction = 'west'
         element.src = `./assets/red-character/west.gif`
+        await sleep(time)
+        stop()
     }
 
-    function walkSouth() {
+    async function walkSouth(time) {
         direction = 'south'
         element.src = `./assets/red-character/south.gif`
+        await sleep(time)
+        stop()
     }
 
     function stop() {
@@ -56,4 +71,9 @@ function newNonPlayableCharacter(x, y) {
         walkSouth: walkSouth,
         stop: stop
     }
+}
+function sleep(time){
+    return new Promise(resolve => {
+        setTimeout(resolve, time)
+    })  
 }
